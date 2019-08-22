@@ -14,7 +14,7 @@ include_once("../core/init.inc.php");
 if (admin::isSession() && !empty($_POST) && !APP_DEMO){
 	
 	//copy video file
-	$folder=$_SERVER['DOCUMENT_ROOT'] . "/uploads/images/";
+	$folder=$_SERVER['DOCUMENT_ROOT'] . "/uploads/videos/thumbs/";
 	$video_thumb = date("Y_m_d_H_i_s_", time()) . $_FILES["video_file"]["name"][0];
 	if (!move_uploaded_file($_FILES["video_file"]["tmp_name"][0], $folder.$video_thumb))
 	{
@@ -23,7 +23,7 @@ if (admin::isSession() && !empty($_POST) && !APP_DEMO){
 	}
 		
 
-	$folder=$_SERVER['DOCUMENT_ROOT'] . "/uploads/videos/";
+	$folder=$_SERVER['DOCUMENT_ROOT'] . "/uploads/videos/videos/";
 	$video_file = date("Y_m_d_H_i_s_", time()) . $_FILES["video_file"]["name"][1];
 	if (!move_uploaded_file($_FILES["video_file"]["tmp_name"][1], $folder.$video_file))
 	{
@@ -36,6 +36,7 @@ if (admin::isSession() && !empty($_POST) && !APP_DEMO){
 	$video_sub = $_POST['video_sub'];
 	$video_amount = $_POST['video_amount'];
 	$video_dur = $_POST['video_dur'];
+	$video_point_premium = $_POST['video_amount_premium'];
 	
 	$video_title = helper::clearText($video_title);
 	$video_title = helper::escapeText($video_title);
@@ -43,7 +44,7 @@ if (admin::isSession() && !empty($_POST) && !APP_DEMO){
 	$video_sub = helper::clearText($video_sub);
 	$video_sub = helper::escapeText($video_sub);
 	
-	$sql = "INSERT INTO videos_list (title, sub, thumb, points, video, time) VALUES ('$video_title','$video_sub','$video_thumb','$video_amount','$video_file','$video_dur')";
+	$sql = "INSERT INTO videos_list (title, sub, thumb, points, video, time, points_premium) VALUES ('$video_title','$video_sub','$video_thumb','$video_amount','$video_file','$video_dur', '$video_point_premium')";
 	$stmt = $dbo->prepare($sql);
 	
 	if($stmt->execute()){

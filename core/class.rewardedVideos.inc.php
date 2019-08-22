@@ -34,15 +34,19 @@ class rewardedVideos extends db_connect
                 
                 $status = "Active";
                 
+                $hostName = $_SERVER['HTTP_HOST']; 
+                $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
+
                 $result = array("video_id" => $row['id'],
                                 "video_title" => $row['title'],
                                 "video_subtitle" => $row['sub'],
-                                "video_url" => '/uploads/videos/' . $row['video'],
+                                "video_url" => $protocol . '://'. $hostName . '/uploads/videos/videos/' . $row['video'],
                                 "video_amount" => $row['points'],
                                 "video_duration" => $row['time'],
                                 "video_thumbnail" => $row['thumb'],
-                                "video_open_link" => $row['open_link'],
-                                "video_status" => $status);
+                                // "video_open_link" => $row['open_link'],
+                                "video_status" => $status,
+                                "video_amount_premium" => $row['points_premium']);
             }
         }
 

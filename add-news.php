@@ -9,8 +9,8 @@
 	 * Copyright 2018 DroidOXY ( http://www.droidoxy.com )
 	 */
 
-	$pagename = 'addVideo';
-	$container = 'videos';
+	$pagename = 'addNews';
+	$container = 'news';
 	
 	include_once("core/init.inc.php");
 
@@ -78,7 +78,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title">
-                            <h4>Add New Video</h4>
+                            <h4>Add New News</h4>
                         </div>
                     </div>
 					<?php if(APP_DEMO) { include_once 'inc/demo-notice.php'; } ?>
@@ -89,25 +89,25 @@
                         
                         <div class="block form-block mb-4">
                             <div class="block-heading">
-                                <h5>New Video Details</h5>
+                                <h5>New News Details</h5>
                             </div>
 
-                            <form action="process/add-video.php" method="post" enctype="multipart/form-data" class="horizontal-form" id="main_form">
+                            <form action="process/add-news.php" method="post" enctype="multipart/form-data" class="horizontal-form" id="main_form">
 							
                                 <div class="form-group">
                                     <div class="form-row">
-                                        <label class="col-md-3">Video Title</label>
+                                        <label class="col-md-3">News Title</label>
                                         <div class="col-md-9">
-                                            <input class="form-control" onchange="changeName(this);" name="video_title" id="video_title" placeholder="Title Here" value="" type="text" autocomplete="off" required=""/>
+                                            <input class="form-control" onchange="changeName(this);" name="news_title" id="news_title" placeholder="Title Here" value="" type="text" autocomplete="off" required=""/>
                                         </div>
                                     </div>
                                 </div>
 							
                                 <div class="form-group">
                                     <div class="form-row">
-                                        <label class="col-md-3">Video Subtitle</label>
+                                        <label class="col-md-3">News Content</label>
                                         <div class="col-md-9">
-                                            <input class="form-control" onchange="changeName(this);" id="video_sub" name="video_sub" placeholder="Watch video to Get 5 Points" value="" type="text" autocomplete="off" required=""/>
+                                            <textarea class="form-control" name="news_content" onchange="changeName(this);" placeholder="Watch News to Get 5 Points" id="news_content" cols="40" rows="5" required=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -116,7 +116,7 @@
                                     <div class="form-row">
                                         <label class="col-md-3">Reward Points</label>
                                         <div class="col-md-9">
-                                            <input class="form-control" id="video_amount" onchange="changeName(this);"  name="video_amount" placeholder="5" min="0" value="" type="number" autocomplete="off" required=""/>
+                                            <input class="form-control" id="news_points" onchange="changeName(this);"  name="news_points" placeholder="5" min="0" value="" type="number" autocomplete="off" required=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -125,44 +125,27 @@
                                     <div class="form-row">
                                         <label class="col-md-3">Premium Reward Points</label>
                                         <div class="col-md-9">
-                                            <input class="form-control" id="video_amount_premium"  onchange="changeName(this);"  name="video_amount_premium" placeholder="10" min="0" value="" type="number" autocomplete="off" required=""/>
+                                            <input class="form-control" id="news_points_premium"  onchange="changeName(this);"  name="news_points_premium" placeholder="10" min="0" value="" type="number" autocomplete="off" required=""/>
                                         </div>
                                     </div>
                                 </div>
 							
-                                <div class="form-group">
+							    <div class="form-group">
                                     <div class="form-row">
-                                        <label class="col-md-3">Video Duration</label>
+                                        <label class="col-md-3">News Image</label>
                                         <div class="col-md-9">
-                                            <input class="form-control" id="video_dur" name="video_dur" placeholder="10 Sec" value="" type="number" min="0" autocomplete="off" required=""/>
+                                            <input class="form-control" id="news_image" name="news_image" onchange="changeName(this);" value="" type="file" autocomplete="off" required="" accept="image/*"/>
                                         </div>
                                     </div>
                                 </div>
 
-							    <div class="form-group">
-                                    <div class="form-row">
-                                        <label class="col-md-3">Video Thumb</label>
-                                        <div class="col-md-9">
-                                            <input class="form-control" id="video_thumb" name="video_file[]" onchange="changeName(this);" value="" type="file" autocomplete="off" required="" accept="image/*"/>
-                                        </div>
-                                    </div>
-                                </div>
-
-							    <div class="form-group">
-                                        <div class="form-row">
-                                            <label class="col-md-3">Video File</label>
-                                            <div class="col-md-9">
-                                                <input class="form-control" id="video_file"  name="video_file[]" value="" type="file" required="" accept="video/*"/>
-                                            </div>
-                                        </div>
-                                </div>
                                 <div class='progress' id="upload_progress_div">
                                     <div class='bar' id='upload_bar'></div>
                                     <div class='percent' id='upload_percent'>0%</div>
                                 </div>
 
                                 <hr />
-                                <button type="submit"  class="btn btn-primary mr-0 pull-right">Add Video</button>
+                                <button type="submit"  class="btn btn-primary mr-0 pull-right">Add News</button>
                                 <br><br>
 
                             </form>
@@ -173,12 +156,12 @@
                     <div class="col-12 col-sm-6 col-md-6 col-lg-4 mb-4 mb-lg-0">
 						<div class="block task-block">
 							<div class="section-title">
-								<h5>New Video Preview</h5>
+								<h5>New News Preview</h5>
 							</div>
 
 							<ul id="inprogress">
 							    
-								<!-- New Video -->
+								<!-- New News -->
 								<li>
 									<div class="task align-items-center" style="cursor: auto;">
 										<div class="members single">
@@ -188,7 +171,7 @@
 										</div>
 										<div class="task-desc">
 											<p id="newtitle" class="task-title text-truncate"> ------- </p>
-											<span class="end-time text-truncate"><p id="newsub"> ---- ---- </p></span>
+											<span class="end-time text-truncate"><p id="newcontent"> ---- ---- </p></span>
 										</div>
 										<div class="members single">
 											<div class="float-right"  style="padding: 1px">
@@ -267,14 +250,14 @@
 
 function changeName(input) {
     
-    const title = document.getElementById('video_title');
-    const sub = document.getElementById('video_sub');
-    const amount = document.getElementById('video_amount');
-    const amount_premium = document.getElementById('video_amount_premium');
-    const video_thumb = document.getElementById('video_thumb');
+    const title = document.getElementById('news_title');
+    const content = document.getElementById('news_content');
+    const amount = document.getElementById('news_points');
+    const amount_premium = document.getElementById('news_points_premium');
+    const news_image = document.getElementById('news_image');
     
     const newtitle = document.getElementById('newtitle');
-    const newsub = document.getElementById('newsub');
+    const newcontent = document.getElementById('newcontent');
     const newAmount = document.getElementById('newAmount');
     const newAmountPremium = document.getElementById('newAmountPremium');
     const newImage = document.getElementById('newImage');
@@ -285,15 +268,15 @@ function changeName(input) {
         newtitle.textContent = '-------'
     }
     
-    if (sub.value) {
-        newsub.textContent = sub.value.substring(0, 20);
+    if (content.value) {
+        newcontent.textContent = content.value.substring(0, 20);
     } else {
         newsub.textContent = '---- ----';
     }
     newAmount.textContent = amount.value;
     newAmountPremium.textContent = amount_premium.value;
-
-    if (video_thumb.value && input === video_thumb ) {
+    
+    if (news_image.value && input === news_image ) {
         const file = input.files[0];
         newImage.src = createObjectURL(file);
         newImage.onload = function() {
@@ -317,7 +300,7 @@ $(function() {
     
 
 
-    //upload video file
+    //upload news file
     $('#main_form').ajaxForm({
         beforeSubmit: function() {
             document.getElementById("upload_progress_div").style.display="block";
@@ -340,9 +323,9 @@ $(function() {
 
         complete: function(res) {
             if (res.responseText == 'ok') {
-                document.location.href = 'videos.php';
+                document.location.href = 'news.php';
             } else {
-                alert ('Adding new video failed');
+                alert ('Adding new news failed');
             }
         }
     }); 

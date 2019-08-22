@@ -126,6 +126,28 @@ $configsMain = new functions($dbo);
             </li>
             
             <li>
+                <a href="javascript:void(0);" <?php if($container == 'news') { echo 'class="have-submenu active"'; }else{ echo 'class="have-submenu"'; } ?>>
+                    <span class="icon-thumbnail"><i class="dripicons-list"></i></span>
+                    <span class="title">News</span>
+                </a>
+                <!--Submenu-->
+                <ul class="sub-menu">
+                    <li>
+                        <a href="news.php" <?php if($pagename == 'allNews') { echo 'class="active"'; } ?>>
+                            <span class="icon-thumbnail"  style="margin-right: 5px;"><i class="ion-ios-bolt-outline"></i></span>
+                            <span class="title">All News</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="add-news.php" <?php if($pagename == 'addNews') { echo 'class="active"'; } ?>>
+                            <span class="icon-thumbnail"  style="margin-right: 5px;"><i class="ion-ios-bolt-outline"></i></span>
+                            <span class="title">Add New News</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            
+            <li>
                 <a href="push.php" <?php if($pagename == 'push-single') { echo 'class="active"'; } ?>>
                     <span class="icon-thumbnail"><i class="dripicons-broadcast"></i></span>
                     <span class="title">Send Push</span>

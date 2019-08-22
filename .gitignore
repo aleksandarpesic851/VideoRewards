@@ -16,5 +16,6 @@ application/logs/*
 !application/logs/.htaccess
 /vendor/
 
-uploads/images/*
-uploads/videos/*
+uploads/news/*
+uploads/videos/thumbs/*
+uploads/videos/videos/*

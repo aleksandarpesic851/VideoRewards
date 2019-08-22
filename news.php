@@ -9,8 +9,8 @@
 	 * Copyright 2018 DroidOXY ( http://www.droidoxy.com )
 	 */
 
-	$pagename = 'allvideos';
-	$container = 'videos';
+	$pagename = 'allNews';
+	$container = 'news';
 	
 	include_once("core/init.inc.php");
 
@@ -80,7 +80,7 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="section-title">
-                            <h4>Videos</h4>
+                            <h4>News</h4>
                         </div>
                     </div>
 					<?php if(APP_DEMO) { include_once 'inc/demo-notice.php'; } ?>
@@ -90,8 +90,8 @@
 					<div class="col-12">
                         <div class="block bg-white table-block mb-4">
                             <div class="block-heading">
-                                <h5>All Videos</h5>
-                                <p class="mt-2">Showing All Videos. You can Delete the Videos (or) Search for the Videos.</p>
+                                <h5>All News</h5>
+                                <p class="mt-2">Showing All News. You can Delete the News (or) Search for the News.</p>
                             </div>
 
                             <div class="row">
@@ -101,8 +101,8 @@
                                         <tr>
                                             <th>No.</th>
                                             <th>Title</th>
-                                            <th>SubTitle</th>
-                                            <th>Video URL</th>
+                                            <th>News Image</th>
+                                            <th>News Content</th>
                                             <th>Points</th>
                                             <th>Premium Points</th>
                                             <th>Action</th>
@@ -112,14 +112,14 @@
 										
 										<?php
 										
-											$videos = new rewardedVideos($dbo);
-											$result = $videos->getAllVideos();
-											$requests_loaded = count($result['videos']);
+											$videos = new News($dbo);
+											$result = $videos->getAllNews();
+											$requests_loaded = count($result['news']);
 											$count = 1;
 											
 											if ($requests_loaded != 0) {
 												
-												foreach ($result['videos'] as $key => $value) {
+												foreach ($result['news'] as $key => $value) {
 												
 													draw($value,$count);
 													$count ++;
@@ -200,12 +200,12 @@
 	?>
 		<tr>
             <td class="text-left"><?php echo $count; ?></td>
-            <td><?php echo $request['video_title']; ?></td>
-            <td><?php echo $request['video_subtitle']; ?></td>
-            <td><?php echo $request['video_url']; ?></td>
-            <td class="price"><?php echo $request['video_amount']; ?></td>
-            <td class="price"><?php echo $request['video_amount_premium']; ?></td>
-            <td><a href="process/del-video.php?vid=<?php echo $request['video_id']; ?>" class="btn btn-danger btn-small"><i class="dripicons-graph-line"></i>Delete</a></td>
+            <td><?php echo $request['news_title']; ?></td>
+            <td><img class="news_image" src="<?php echo $request['news_image']; ?>"></td>
+            <td><?php echo $request['news_content']?></td>
+            <td class="price"><?php echo $request['news_amount']; ?></td>
+            <td class="price"><?php echo $request['news_amount_premium']; ?></td>
+            <td><a href="process/del-news.php?vid=<?php echo $request['news_id']; ?>" class="btn btn-danger btn-small"><i class="dripicons-graph-line"></i>Delete</a></td>
         </tr>
 	<?php
     }

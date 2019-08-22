@@ -80,6 +80,8 @@ body{
     --danger-alpha-Dot5: rgba(246,95,110, 0.5);
     --warning-color: #F8BC34;
     --warning-alpha-Dot5: rgba(254,201,90, 0.5);
+
+    --gold: rgb(231, 191, 97);
 }
 
 
@@ -268,7 +270,9 @@ canvas{
 /*----------------------------------
   3.1 Background Colors
 ----------------------------------*/
-
+.bg-gold{
+    background: var(--gold) !important;
+}
 .bg-primary{
     background: var(--primary-color) !important;
 }
@@ -3014,6 +3018,10 @@ body .jqstooltip {
     }
 }
 
-
+.news_image
+{
+    width: 100px;
+    height: 100px;
+}
 
 
