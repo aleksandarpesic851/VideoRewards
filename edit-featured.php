@@ -158,6 +158,15 @@
                                     </div>
                                 </div>
                                 
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <label class="col-md-3"><?php echo $result['offer_title']; ?> Premium Reward</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" name="points_premium" placeholder="25" type="text" value="<?php if($valid){ echo $result['offer_points_premium']; } ?>" required=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
                                 <?php } } ?>
                                 
                                 <?php if($valid){ if($result['offer_type'] == "admobvideo"){ ?>
@@ -167,6 +176,15 @@
                                         <label class="col-md-3">Admob Video Credit</label>
                                         <div class="col-md-9">
                                             <input class="form-control" name="points" placeholder="2" type="text" value="<?php if($valid){ echo $configs->getConfig('AdmobVideoCredit_Amount'); } ?>" required=""/>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <label class="col-md-3">Admob Video Premium Credit</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" name="points_premium" placeholder="2" type="text" value="<?php if($valid){ echo $configs->getConfig('AdmobVideoCredit_Premium_Amount'); } ?>" required=""/>
                                         </div>
                                     </div>
                                 </div>
@@ -193,6 +211,15 @@
                                     </div>
                                 </div>
                                 
+                                <div class="form-group">
+                                    <div class="form-row">
+                                        <label class="col-md-3">StartApp Video Premium Credit</label>
+                                        <div class="col-md-9">
+                                            <input class="form-control" name="points_premium" placeholder="2" type="text" value="<?php if($valid){ echo $configs->getConfig('StartAppVideoCredit_Premium_Amount'); } ?>" required=""/>
+                                        </div>
+                                    </div>
+                                </div>
+
                                 <?php } } ?>
                             
                                 <hr />

@@ -22,7 +22,9 @@
 	$configs = new functions($dbo);
 	$configs->updateConfigs(time(),'LAST_ADMIN_ACCESS');
     $url  = isset($_SERVER['HTTPS']) ? 'https://' : 'http://';
-    $url .= $_SERVER['SERVER_NAME'].= $_SERVER['REQUEST_URI'];
+    //$url .= $_SERVER['SERVER_NAME'].= $_SERVER['REQUEST_URI'];
+    $url .= $_SERVER['HTTP_HOST'];
+    $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -137,8 +139,8 @@
                                     <div class="form-row">
                                         <label class="col-md-3">WebPanel URL</label>
                                         <div class="col-md-9">
-                                            <input class="form-control" name="webpanel_url" placeholder="WebPanel URL" value="<?php echo dirname($url)."/"; ?>" type="text" autocomplete="off" required="" style="background: #e9ecef; " hidden/>
-                                            <input class="form-control" name="webpanel_url" placeholder="WebPanel URL" value="<?php echo dirname($url)."/"; ?>" type="text" autocomplete="off" required="" style="background: #e9ecef; " disabled/>
+                                            <input class="form-control" name="webpanel_url" placeholder="WebPanel URL" value="<?php echo $url."/"; ?>" type="text" autocomplete="off" required="" style="background: #e9ecef; " hidden/>
+                                            <input class="form-control" name="webpanel_url" placeholder="WebPanel URL" value="<?php echo $url."/"; ?>" type="text" autocomplete="off" required="" style="background: #e9ecef; " disabled/>
                                         </div>
                                     </div>
                                 </div>

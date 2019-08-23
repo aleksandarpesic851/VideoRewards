@@ -43,6 +43,7 @@ class offerwalls extends db_connect
                                 "offer_subtitle" => $row['subtitle'],
                                 "offer_type" => $row['type'],
                                 "offer_points" => $row['points'],
+                                "offer_points_premium" => $row['points_premium'],
                                 "offer_featured" => $featured,
                                 "offer_thumbnail" => $row['image'],
                                 "offer_status" => $status);

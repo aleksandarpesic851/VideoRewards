@@ -23,6 +23,7 @@
 		$image_name = isset($_POST['image_name']) ? $_POST['image_name'] : $ID."_offerwall_image.png";
 		$type = $_POST['type'];
 		$points = isset($_POST['points']) ? $_POST['points'] : 0;
+		$points_premium = isset($_POST['points_premium']) ? $_POST['points_premium'] : 0;
 		$val1 = isset($_POST['val1']) ? $_POST['val1'] : "0000";
 		$val2 = isset($_POST['val2']) ? $_POST['val2'] : "0000";
 		
@@ -31,19 +32,23 @@
 		
 		if($type == "checkin"){
 		    
-		    $result = $configs->updateConfigs($points, 'DAILY_REWARD');
+			$result = $configs->updateConfigs($points, 'DAILY_REWARD');
+			$result = $configs->updateConfigs($points_premium, 'DAILY_PREMIUM_REWARD');
 		    
 		}else if($type == "refer"){
 		    
-		    $result = $configs->updateConfigs($points, 'REFER_REWARD');
+			$result = $configs->updateConfigs($points, 'REFER_REWARD');
+			$result = $configs->updateConfigs($points_premium, 'REFER_PREMIUM_REWARD');
 		    
 		}else if($type == "admobvideo"){
 		    
-		    $result = $configs->updateConfigs($points, 'AdmobVideoCredit_Amount');
+			$result = $configs->updateConfigs($points, 'AdmobVideoCredit_Amount');
+			$result = $configs->updateConfigs($points_premium, 'AdmobVideoCredit_Premium_Amount');
 		    
 		}else if($type == "startapp"){
 		    
-		    $result = $configs->updateConfigs($points, 'StartAppVideoCredit_Amount');
+			$result = $configs->updateConfigs($points, 'StartAppVideoCredit_Amount');
+			$result = $configs->updateConfigs($points_premium, 'StartAppVideoCredit_Premium_Amount');
 		    $result = $configs->updateConfigs($val1, 'StartApp_AppID');
 		    
 		}
@@ -71,7 +76,7 @@
 				
 				$urlfinal = $urlfinal.$image->getName().'.'.$image->getMime();
     		    
-    		    $sql = "UPDATE offerwalls SET name = '$name', subtitle = '$subtitle', points = '$points', image = '$urlfinal' WHERE id = '$ID' ";
+    		    $sql = "UPDATE offerwalls SET name = '$name', subtitle = '$subtitle', points = '$points', points_premium = '$points_premium', image = '$urlfinal' WHERE id = '$ID' ";
     			$stmt = $dbo->prepare($sql);
     			if($stmt->execute()){ $result = true; }
 				
@@ -81,7 +86,7 @@
 				 
 				 // update without image
 		    
-    		    $sql = "UPDATE offerwalls SET name = '$name', subtitle = '$subtitle', points = '$points' WHERE id = '$ID' ";
+    		    $sql = "UPDATE offerwalls SET name = '$name', subtitle = '$subtitle', points = '$points', points_premium = '$points_premium' WHERE id = '$ID' ";
     			$stmt = $dbo->prepare($sql);
     			
     			if($stmt->execute()){ $result = true; }
