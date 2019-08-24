@@ -31,6 +31,7 @@ class News extends db_connect
             if ($stmt->rowCount() > 0) {
 
                 $row = $stmt->fetch();
+                $status = "Active";
                 
                 $hostName = $_SERVER['HTTP_HOST']; 
                 $protocol = strtolower(substr($_SERVER["SERVER_PROTOCOL"],0,5))=='https'?'https':'http';
@@ -40,7 +41,8 @@ class News extends db_connect
                                 "news_image" => $protocol . '://'. $hostName . '/uploads/news/' . $row['image'],
                                 "news_amount" => $row['points'],
                                 "news_content" => $row['content'],
-                                "news_amount_premium" => $row['points_premium']);
+                                "news_amount_premium" => $row['points_premium'],
+                                "news_status" => $status);
             }
         }
 
@@ -70,28 +72,28 @@ class News extends db_connect
         return $requests;
     }
 
-    // public function getStatus($videoid,$user)
-    // {
+    public function getStatus($newsid,$user)
+    {
         
-    //     $result = array("error" => true,
-    //                     "error_code" => ERROR_ACCOUNT_ID);
+        $result = array("error" => true,
+                        "error_code" => ERROR_ACCOUNT_ID);
 
-    //     $stmt = $this->db->prepare("SELECT * FROM video_status WHERE username = '$user' AND videoid = '$videoid' ORDER BY id DESC LIMIT 1");
-    //     $stmt->execute();
+        $stmt = $this->db->prepare("SELECT * FROM news_status WHERE username = '$user' AND newsid = '$newsid' ORDER BY id DESC LIMIT 1");
+        $stmt->execute();
         
-    //     if ($stmt->rowCount() > 0) {
+        if ($stmt->rowCount() > 0) {
 
-    //             $row = $stmt->fetch();
+                $row = $stmt->fetch();
                 
-    //             $result = array("id" => $row['id'],
-    //                             "user" => $row['username'],
-    //                             "video_id" => $row['videoid'],
-    //                             "points" => $row['points'],
-    //                             "date" => $row['date'],
-    //                             "status" => $row['status']);
-    //     }
+                $result = array("id" => $row['id'],
+                                "user" => $row['username'],
+                                "news_id" => $row['newsid'],
+                                "points" => $row['points'],
+                                "date" => $row['date'],
+                                "status" => $row['status']);
+        }
         
-    //     return $result;
-    // }
+        return $result;
+    }
     
 }

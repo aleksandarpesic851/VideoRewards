@@ -325,7 +325,8 @@ class account extends db_connect
                                 "mobile" => $row['mobile'],
                                 "points" => $row['points'],
                                 "refer" => $row['refer'],
-                                "refered" => $row['refered']);
+                                "refered" => $row['refered'],
+                                "premium" => $row['premium']);
             }
         }
 
@@ -361,7 +362,8 @@ class account extends db_connect
                                 "mobile" => $row['mobile'],
                                 "points" => $row['points'],
                                 "refer" => $row['refer'],
-                                "refered" => $row['refered']);
+                                "refered" => $row['refered'],
+                                "premium" => $row['premium']);
             }
         }
 
@@ -425,7 +427,8 @@ class account extends db_connect
                                 "mobile" => $row['mobile'],
                                 "points" => $row['points'],
                                 "refer" => $row['refer'],
-                                "refered" => $row['refered']);
+                                "refered" => $row['refered'],
+                                "premium" => $row['premium']);
             }
         }
 

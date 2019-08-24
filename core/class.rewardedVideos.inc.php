@@ -43,7 +43,7 @@ class rewardedVideos extends db_connect
                                 "video_url" => $protocol . '://'. $hostName . '/uploads/videos/videos/' . $row['video'],
                                 "video_amount" => $row['points'],
                                 "video_duration" => $row['time'],
-                                "video_thumbnail" => $row['thumb'],
+                                "video_thumbnail" => $protocol . '://'. $hostName . '/uploads/videos/thumbs/' . $row['thumb'],
                                 // "video_open_link" => $row['open_link'],
                                 "video_status" => $status,
                                 "video_amount_premium" => $row['points_premium']);
