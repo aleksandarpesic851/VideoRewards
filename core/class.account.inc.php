@@ -91,15 +91,15 @@ class account extends db_connect
         
         $ip_addr = helper::ip_addr();
         
-        if ($helper->isIpExists($ip_addr)) {
+        // if ($helper->isIpExists($ip_addr)) {
 
-            $result = array("error" => true,
-                "error_code" => ERROR_IP_TAKEN,
-                "error_type" => 4,
-                "error_description" => "This Device is already registered, only one Account for one device !");
+        //     $result = array("error" => true,
+        //         "error_code" => ERROR_IP_TAKEN,
+        //         "error_type" => 4,
+        //         "error_description" => "This Device is already registered, only one Account for one device !");
 
-            return $result;
-        }
+        //     return $result;
+        // }
 
         $salt = helper::generateSalt(3);
         $refer = helper::generateRandomString();
