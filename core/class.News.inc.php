@@ -54,7 +54,7 @@ class News extends db_connect
     
         $requests = array("error" => false, "error_code" => ERROR_SUCCESS, "news" => array());
 
-        $stmt = $this->db->prepare("SELECT id FROM news_list ORDER BY id ASC");
+        $stmt = $this->db->prepare("SELECT id FROM news_list ORDER BY id DESC");
         $stmt->bindParam(':requestId', $requestId, PDO::PARAM_INT);
 
         if ($stmt->execute()) {
