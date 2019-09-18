@@ -51,6 +51,7 @@ if (!empty($_POST)) {
     }
     
     $refererCode = $json['value'];
+    $referReward = $json['name'];
 
     $account = new account($dbo, $accountId);
     $notify = new functions($dbo);
@@ -93,7 +94,6 @@ if (!empty($_POST)) {
         // THE START
         
         $time  = time();
-        $referReward = $notify->getConfig('REFER_REWARD');
         $referBonusTitle = $notify->getConfig('REFERAL_BONUS_TITLE');
         $refererBonusTitle = $notify->getConfig('REFERER_BONUS_TITLE');
         

@@ -326,7 +326,10 @@ class account extends db_connect
                                 "points" => $row['points'],
                                 "refer" => $row['refer'],
                                 "refered" => $row['refered'],
-                                "premium" => $row['premium']);
+                                "premium" => $row['premium'],
+                                "payment_type" => $row['payment_type'],
+                                "payment_reference" => $row['payment_reference'],
+                            );
             }
         }
 
@@ -533,6 +536,20 @@ class account extends db_connect
     public function getId()
     {
         return $this->id;
+    }
+
+    public function updatePaymentReferer($payType, $payReference) {
+        $stmt = $this->db->prepare("UPDATE users SET payment_type = (:paymentType), payment_reference = (:referernce) WHERE id = (:accountId)");
+        $stmt->bindParam(":accountId", $this->id, PDO::PARAM_INT);
+        $stmt->bindParam(":paymentType", $payType, PDO::PARAM_STR);
+        $stmt->bindParam(":referernce", $payReference, PDO::PARAM_STR);
+        $stmt->execute();
+    }
+
+    public function updateToPremium() {
+        $stmt = $this->db->prepare("UPDATE users SET premium = 1 WHERE id = (:accountId)");
+        $stmt->bindParam(":accountId", $this->id, PDO::PARAM_INT);
+        $stmt->execute();
     }
 }
 

@@ -21,6 +21,7 @@ if (!empty($_POST)) {
 
     $accountId = isset($json['accountId']) ? $json['accountId'] : '';
     $accessToken = isset($json['accessToken']) ? $json['accessToken'] : '';
+    $checkinReward = isset($json['name']) ? $json['name'] : '0';
     
     $user = isset($json['user']) ? $json['user'] : '11';
     
@@ -46,7 +47,6 @@ if (!empty($_POST)) {
     $notify = new functions($dbo);
     $userdata = $account->get();
     $timeCurrent = time();
-    $checkinReward = $notify->getConfig('DAILY_REWARD');
     $checkinBonusTitle = $notify->getConfig('CHECKIN_BONUS_TITLE');
     
     $rewardUser = false;
