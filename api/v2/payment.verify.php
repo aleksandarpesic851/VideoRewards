@@ -40,7 +40,11 @@ include_once("../api.inc.php");
     }
 
     else if ($payType == 'PAYPAL') {
-
+        if ($accountInfo['premium'] == 1) {
+            $response = array("error" => false, "error_code" => ERROR_SUCCESS, "premium" => true);
+        } else {
+            $response = array("error" => false, "error_code" => ERROR_SUCCESS, "premium" => false);
+        }
     }
 
     echo json_encode($response);
